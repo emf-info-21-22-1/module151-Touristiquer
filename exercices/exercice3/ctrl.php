@@ -1,5 +1,6 @@
 <?php
-function getEquipes(){
+function getEquipes()
+{
   require('wrk.php');
   return getEquipesFromDB();
 }
