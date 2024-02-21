@@ -5,7 +5,7 @@
  * @version 1.0 / 13-SEP-2013
  */
 
-var BASE_URL = "http://localhost/151/151_Ex10_Debuggage_Kitzbuehl/serveur/";
+var BASE_URL = "http://localhost:8080/serveur";
 
 /**
  * Fonction permettant de demander la liste des pays au serveur.

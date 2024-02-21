@@ -5,7 +5,7 @@
  * @version 1.0 / 20-SEP-2013
  */
 
-var BASE_URL = "https://benedettir.emf-informatique.ch/151/exercice5/server/joueurs.php";
+var BASE_URL = "http://localhost:8080/server/main.php";
 
 /**
  * Fonction permettant de charger les données d'équipe.
@@ -14,7 +14,7 @@ var BASE_URL = "https://benedettir.emf-informatique.ch/151/exercice5/server/joue
  */
 function chargerTeam(successCallback, errorCallback) {
     $.ajax({
-        type: "GET",
+        type: "POST",
         dataType: "xml",
         url: BASE_URL,
         data: 'action=equipe',
@@ -32,7 +32,7 @@ function chargerTeam(successCallback, errorCallback) {
  */
 function chargerPlayers(teamid, successCallback, errorCallback) {
     $.ajax({
-        type: "GET",
+        type: "POST",
         dataType: "xml",
         url: BASE_URL,
         data: 'action=joueur&equipeId=' + teamid,
