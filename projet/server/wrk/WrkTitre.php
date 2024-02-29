@@ -19,7 +19,7 @@ class WrkTitre{
     }
 
     /**
-     * Fonction qui permet de retourner la liste de toute les cartes en format Json.
+     * Fonction qui permet de retourner la liste de toute les Titres en format Json.
      *
      * @return Json
      * 
@@ -30,9 +30,9 @@ class WrkTitre{
     }
 
     /**
-     * Fonction qui va chercher la liste de toutes les cartes dans la DB.
+     * Fonction qui va chercher la liste de toutes les Titres dans la DB.
      *
-     * @return liste de cartes
+     * @return liste de Titres
      * 
      */
     private function afficheAllTitles(){
@@ -48,7 +48,7 @@ class WrkTitre{
 
 
     /**
-     * Fonction qui retourne 0, 1 ou plusieurs cartes en fonction du string rechercher.
+     * Fonction qui retourne 0, 1 ou plusieurs Titres en fonction du string rechercher.
      *
      * @param mixed $searchedString
      * 
@@ -61,11 +61,11 @@ class WrkTitre{
     }
 
     /**
-     * Fonction qui va chercher la liste des cartes rechercher dans la DB.
+     * Fonction qui va chercher la liste des Titres rechercher dans la DB.
      *
      * @param mixed $searchedString
      * 
-     * @return liste de cartes
+     * @return liste de Titres
      * 
      */
     private function afficheSearchTitle($searchedString){
@@ -82,7 +82,7 @@ class WrkTitre{
     }
 
     /**
-     * Permet de retourner les cartes d'un utilisateur.
+     * Permet de retourner les Titres d'un utilisateur.
      *
      * @return Json
      * 
@@ -98,9 +98,9 @@ class WrkTitre{
     }
 
     /**
-     * Fonction qui va rechercher la liste des cartes de l'utilisateur stocké dans la session.
+     * Fonction qui va rechercher la liste des Titres de l'utilisateur stocké dans la session.
      *
-     * @return liste de cartes
+     * @return liste de Titres
      * 
      */
     public function afficheUserTitle(){
@@ -117,9 +117,9 @@ class WrkTitre{
     }
 
     /**
-     * Permet de retourner le resultat de la suppression d'une cartes.
+     * Permet de retourner le resultat de la suppression d'une Titres.
      *
-     * @param mixed $titleName carte à supprimer
+     * @param mixed $titleName titre à supprimer
      * 
      * @return boolean
      * 
@@ -134,9 +134,9 @@ class WrkTitre{
     }
 
     /**
-     * Fonction qui permet de supprimer une carte de la liste de l'utilisateur de la session.
+     * Fonction qui permet de supprimer une titre de la liste de l'utilisateur de la session.
      *
-     * @param mixed $titleName carte à supprimer
+     * @param mixed $titleName titre à supprimer
      * 
      * @return boolean si tout s'est bien passé
      * 
@@ -165,7 +165,7 @@ class WrkTitre{
     }
 	
 	/**
-	 * Permet de retourner les cartes que l'utilisateur ne possède pas encore dans sa liste.
+	 * Permet de retourner les Titres que l'utilisateur ne possède pas encore dans sa liste.
 	 *
 	 * @return Json 
 	 * 
@@ -180,9 +180,9 @@ class WrkTitre{
     }
 
     /**
-     * Fonction qui va chercher les cartes que l'utilisateur de la session de possède pas.
+     * Fonction qui va chercher les Titres que l'utilisateur de la session de possède pas.
      *
-     * @return liste de cartes.
+     * @return liste de Titres.
      * 
      */
     private function titlesUserNotHave(){
@@ -199,9 +199,9 @@ class WrkTitre{
     }
 
     /**
-     * Permet de tester si l'ajout d'une carte dans la DB s'est bien passé.
+     * Permet de tester si l'ajout d'une titre dans la DB s'est bien passé.
      *
-     * @param mixed $titlesName liste de cartes
+     * @param mixed $titlesName liste de Titres
      * 
      * @return boolean
      * 
@@ -220,7 +220,7 @@ class WrkTitre{
     }
 
     /**
-     * Permet d'ajouter une carte dans la liste de l'utilisateur de la session.
+     * Permet d'ajouter une titre dans la liste de l'utilisateur de la session.
      *
      * @param mixed $titlesName
      * 
