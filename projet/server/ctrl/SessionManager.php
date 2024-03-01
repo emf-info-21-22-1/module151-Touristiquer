@@ -59,4 +59,12 @@ class SessionManager
     {
         return array_key_exists($key, $_SESSION);
     }
+
+    public function signUp()
+    {
+    }
+
+    public function TestLogin()
+    {
+    }
 }
