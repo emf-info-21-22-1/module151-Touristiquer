@@ -60,7 +60,10 @@ class SessionManager
         return array_key_exists($key, $_SESSION);
     }
 
-    public function signUp()
+    public function signUp($Username, $Email, $Password)
+    {
+    }
+    public function signIn($username, $password)
     {
     }
 

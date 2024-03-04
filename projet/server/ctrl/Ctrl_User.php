@@ -47,14 +47,14 @@ class Ctrl_User
     {
     }
 
-    public function signUp(): void
+    public function signUp($Username, $Email, $Password): void
     {
         if (!empty($Username) && !empty($Email) && !empty($Password)) {
             $hashPassword = password_hash($Password, PASSWORD_DEFAULT);
             $user = new User(null, $Username, $Email, $hashPassword);
             $user->setUsername($Username);
 
-            if ($this->SessionManager->signUp($user)) {
+            if ($this->SessionManager->signUp($Username, $Email, $Password)) {
                 echo 200;
             } else {
                 //Une erreur est survenue et le profil n'a pas été créé
@@ -66,8 +66,22 @@ class Ctrl_User
         }
     }
 
-    public function signIn()
+    public function signIn($username, $password)
     {
-        return "coucou";
+        if (!empty($username) && !empty($password)) {
+            $_SESSION['username'] = htmlspecialchars($username);
+            $_SESSION['password'] = $password;
+            $_SESSION['isConnected'] = false;
+
+            if ($this->SessionManager->signIn($username, $password)) {
+                echo 200;
+            } else {
+                //Une erreur est survenue et le profil n'a pas été créé
+                echo 500;
+            }
+        } else {
+            //La requete est incomplète ou mal formulée
+            echo 400;
+        }
     }
 }
