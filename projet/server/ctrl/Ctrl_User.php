@@ -15,20 +15,21 @@ class Ctrl_User
 
     public function __construct()
     {
-        $this->SessionManager = new SessionManager();
+        $this->SessionManager = SessionManager::getInstance();
     }
 
-    //check si le login est ok echo 200 si oui et 401 si non
-    public function TestLogin($Username, $Email, $Password)
+    //check si le login est ok echo 200 si oui et 401 si nonb
+    public function TestLogin($username, $password)
     {
         if (!empty($username) && !empty($mail) && !empty($password)) {
-            $user = new User(null, $Username, $Email, $Password);
+            $user = new User(null, $username, null, $password);
 
-            if ($this->SessionManager->TestLogin($user)) {
-                echo 200;
-            } else {
-                echo 401;
-            }
+            $wrk = new wrkLogin();
+
+            $wrk->TestLogin($user);
+
+            //Logique de la session en settant les variables de session et écriture de la réponse en JSON
+
         } else {
             echo 400;
         }
@@ -47,19 +48,16 @@ class Ctrl_User
     {
     }
 
-    public function signUp($Username, $Email, $Password): void
+    public function signUp($username, $email, $password): void
     {
-        if (!empty($Username) && !empty($Email) && !empty($Password)) {
-            $hashPassword = password_hash($Password, PASSWORD_DEFAULT);
-            $user = new User(null, $Username, $Email, $hashPassword);
-            $user->setUsername($Username);
-
-            if ($this->SessionManager->signUp($Username, $Email, $Password)) {
-                echo 200;
-            } else {
-                //Une erreur est survenue et le profil n'a pas été créé
-                echo 500;
-            }
+        if (!empty($username) && !empty($email) && !empty($password)) {
+            $hashPassword = password_hash($password, PASSWORD_DEFAULT);
+            $user = new User(null, $username, $email, $hashPassword);
+            $user->setusername($username);
+            $user->setemail($email);
+            $user->setpassword($hashPassword);
+            $wrk = new WrkLogin();
+            $wrk->createProfile($user);
         } else {
             //La requete est incomplète ou mal formulée
             echo 400;
@@ -73,12 +71,7 @@ class Ctrl_User
             $_SESSION['password'] = $password;
             $_SESSION['isConnected'] = false;
 
-            if ($this->SessionManager->signIn($username, $password)) {
-                echo 200;
-            } else {
-                //Une erreur est survenue et le profil n'a pas été créé
-                echo 500;
-            }
+            $this->SessionManager->set('username', $username);
         } else {
             //La requete est incomplète ou mal formulée
             echo 400;

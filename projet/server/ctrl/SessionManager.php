@@ -1,19 +1,32 @@
 <?php
 
+
 /**
  * The SessionManager class, its use is to manage session
  */
 class SessionManager
 {
+
+    private static $instance;
+
     /**
      * Create a new instance of SessionManager, it creates a new session if it already doesn't exist
      */
-    public function __construct()
+    private function __construct()
     {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
     }
+
+    public static function getInstance()
+    {
+        if (is_null(self::$instance)) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+
     /**
      * Return the value of an existing key stored in the session, otherwise null
      * @param string $key The searched key's value
@@ -67,7 +80,7 @@ class SessionManager
     {
     }
 
-    public function TestLogin()
+    public function TestLogin($user)
     {
     }
 }

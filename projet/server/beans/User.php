@@ -57,6 +57,15 @@ class User implements JsonSerializable
         $this->Username = $username;
     }
 
+    public function setEmail($Email)
+    {
+        $this->Email = $Email;
+    }
+
+    public function setPassword($Password){
+        $this->Password = $Password;
+      }
+
     /**
      * Permet de retourner une carte en format Json.
      *
