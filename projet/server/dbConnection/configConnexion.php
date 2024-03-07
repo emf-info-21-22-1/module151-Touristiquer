@@ -4,5 +4,5 @@
     define('DB_HOST', 'host.docker.internal');
     define('DB_NAME', 'db_TourisTunes');
     define('DB_USER', 'root');
-    define('DB_PASS', 'emf12345');
+    define('DB_PASS', 'emf123');
 ?>

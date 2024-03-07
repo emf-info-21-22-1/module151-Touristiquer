@@ -72,7 +72,7 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
                             $email = $data["email"];
                             $password = $data["password"];
                             $userCtrl = new Ctrl_User();
-                            $result = $userCtrl->signUp($username, $password, $email);
+                            $result = $userCtrl->signUp($username, $email, $password);
                             echo $result;
                         } else {
                             echo 'Certains champs sont manquants dans les données JSON !';
@@ -81,8 +81,8 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
                     case 'signIn':
                         // Vérifier que les champs nécessaires sont présents dans les données JSON
                         if (isset($data['username'], $data['password'])) {
-                            $username = $data["username"];
-                            $password = $data["password"];
+                            $username = $data['username'];
+                            $password = $data['password'];
                             $userCtrl = new Ctrl_User();
                             $result = $userCtrl->signIn($username, $password);
                             echo $result;

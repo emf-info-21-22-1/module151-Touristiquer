@@ -8,6 +8,7 @@
 
 require_once('SessionManager.php');
 require_once('./beans/User.php');
+require_once('./wrk/wrkLogin.php');
 
 class Ctrl_User
 {
@@ -53,10 +54,11 @@ class Ctrl_User
         if (!empty($username) && !empty($email) && !empty($password)) {
             $hashPassword = password_hash($password, PASSWORD_DEFAULT);
             $user = new User(null, $username, $email, $hashPassword);
-            $user->setusername($username);
-            $user->setemail($email);
-            $user->setpassword($hashPassword);
+            $user->setUsername($username);
+            $user->setEmail($email);
+            $user->setPassword($hashPassword);
             $wrk = new WrkLogin();
+            var_dump($user);
             $wrk->createProfile($user);
         } else {
             //La requete est incomplète ou mal formulée
@@ -66,15 +68,24 @@ class Ctrl_User
 
     public function signIn($username, $password)
     {
-        if (!empty($username) && !empty($password)) {
-            $_SESSION['username'] = htmlspecialchars($username);
-            $_SESSION['password'] = $password;
-            $_SESSION['isConnected'] = false;
+        $wrk = new wrkLogin();
+        $user = $wrk->getUserByUsername($username);
 
-            $this->SessionManager->set('username', $username);
+        if ($user) {
+            // Vérifier le mot de passe entré par l'utilisateur avec password_verify
+            if (password_verify($password, $user->getPassword())) {
+                // Mettre la pk du user dans $_SESSION à l'aide du session manager
+                $_SESSION['pk_user'] = $user->getPk();
+                $_SESSION['username'] = $user->getUsername();
+                // Renvoye les variables 
+                echo json_encode(array('success' => true, 'message' => 'Login successful', 'pk_user' => $_SESSION['pk_user'], 'username' => $_SESSION['username']));
+            } else {
+                // Renvoye que le password n'est pas bon
+                echo json_encode(array('success' => false, 'message' => 'Incorrect password'));
+            }
         } else {
-            //La requete est incomplète ou mal formulée
-            echo 400;
+            // Renvoye un message si l'user n'existe pas
+            echo json_encode(array('success' => false, 'message' => 'User not found'));
         }
     }
 }

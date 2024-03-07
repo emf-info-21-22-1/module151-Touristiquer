@@ -1,7 +1,7 @@
 # Projet
 Repository du projet personnel du module 151
 
-## TouristTunes
+## TourisTunes
 
 ### Description du projet
 Mon projet de plateforme en ligne tire son inspiration de SoundCloud, mais avec une intention particulière : offrir aux amateurs de musique un espace dédié à la découverte et au partage de créations de sons. Les utilisateurs pourront créer un compte sur cette plateforme afin d'uploader leurs propres chansons et de les partager avec la communauté.
@@ -16,8 +16,8 @@ En tant que producteur de musique, cette plateforme me permettra de partager mes
 - La partie serveur qui regroupe tous les fichiers nécessaires au fonctionnement du serveur développé en PHP se trouve dans /projet/server
 
 ### Fonctionnalités visiteur
-- [ ] S'inscrire
-- [ ] Se conencter
+- [x] S'inscrire
+- [x] Se connecter
 - [ ] Ecouter les musiques
 - [ ] Charger les musiques
 - [ ] Rechercher une musique

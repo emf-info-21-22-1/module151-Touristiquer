@@ -1,7 +1,8 @@
 <?php
-require_once('Connexion.php');
-require_once('./ctrl/Ctrl_User.php');
 
+require_once('dbConnection/Connexion.php');
+require_once('./ctrl/Ctrl_User.php');
+require_once('./beans/User.php');
 
 class wrkLogin
 {
@@ -21,7 +22,7 @@ class wrkLogin
         $params = array("username" => $user->getUsername(), "email" => $user->getMail());
 
         // Vérifier si l'utilisateur existe avec le nom d'utilisateur ou l'adresse e-mail
-        $userData = $this->connection->selectSingleQuery('SELECT * FROM t_user WHERE username=:username OR email=:email', $params);
+        $userData = $this->connection->selectSingleQuery('SELECT * FROM T_user WHERE username=:username OR email=:email', $params);
 
         if ($userData) {
             // L'utilisateur existe
@@ -43,21 +44,21 @@ class wrkLogin
 
     public function getUserByUsername($username)
     {
-        $query = "SELECT * FROM t_user WHERE username = :username";
+        $params = array("username" => $username);
 
-        // Préparation de la déclaration
-        $statement = $this->connection->selectSingleQuery($query);
+        // Vérifier si le nom d'utilisateur existe
+        $existingUser = $this->connection->selectSingleQuery('SELECT * FROM T_User WHERE username=:username', $params);
 
-        // Liaison des paramètres
-        $statement->bindParam(':username', $username);
-        $statement->execute();
+        if ($existingUser) {
+            $user = new User(
+                $existingUser['PK_User'], 
+                $existingUser['Username'],
+                $existingUser['Email'],
+                $existingUser['Password']
+            );
 
-        // Récupération du résultat
-        $user = $statement->fetch(PDO::FETCH_ASSOC);
-
-        // Vérifier si le select a trouvé l'user
-        if ($user) {
             return $user;
+
         } else {
             return false;
         }
@@ -71,16 +72,16 @@ class wrkLogin
         $params = array("username" => $user->getUsername());
 
         // Vérifier si le nom d'utilisateur existe déjà
-        $existingUsername = $this->connection->selectSingleQuery('SELECT * FROM t_user WHERE username=:username', $params);
+        $existingUsername = $this->connection->selectSingleQuery('SELECT * FROM T_User WHERE username=:username', $params);
 
-        $params = array("email"  => $user->getMail());
+        $params = array("email"  => $user->getEmail());
 
         // Vérifier si l'adresse e-mail existe déjà
-        $existingEmail = $this->connection->selectSingleQuery('SELECT * FROM t_user WHERE email=:email', $params);
+        $existingEmail = $this->connection->selectSingleQuery('SELECT * FROM T_User WHERE email=:email', $params);
 
         if (!$existingUsername && !$existingEmail) {
             // Ni le nom d'utilisateur ni l'adresse e-mail existent encore
-            $query = 'INSERT INTO t_user (username, email, password) VALUES (:username, :email, :password)';
+            $query = 'INSERT INTO T_User (username, email, password) VALUES (:username, :email, :password)';
             $params = array("username" => $user->getUsername(), "email" => $user->getEmail(), "password" => $user->getPassword());
 
             if ($this->connection->executeQuery($query, $params)) {
