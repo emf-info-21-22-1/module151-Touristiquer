@@ -41,6 +41,28 @@ class wrkLogin
         return $return;
     }
 
+    public function getUserByUsername($username)
+    {
+        $query = "SELECT * FROM t_user WHERE username = :username";
+
+        // Préparation de la déclaration
+        $statement = $this->connection->selectSingleQuery($query);
+
+        // Liaison des paramètres
+        $statement->bindParam(':username', $username);
+        $statement->execute();
+
+        // Récupération du résultat
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+        // Vérifier si le select a trouvé l'user
+        if ($user) {
+            return $user;
+        } else {
+            return false;
+        }
+    }
+
 
     public function createProfile($user)
     {
