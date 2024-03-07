@@ -77,8 +77,9 @@ class Ctrl_User
                 // Mettre la pk du user dans $_SESSION à l'aide du session manager
                 $_SESSION['pk_user'] = $user->getPk();
                 $_SESSION['username'] = $user->getUsername();
+                $_SESSION['email'] = $user->getEmail();
                 // Renvoye les variables 
-                echo json_encode(array('success' => true, 'message' => 'Login successful', 'pk_user' => $_SESSION['pk_user'], 'username' => $_SESSION['username']));
+                echo json_encode(array('success' => true, 'message' => 'Login successful', 'pk_user' => $_SESSION['pk_user'], 'username' => $_SESSION['username'], 'email' => $_SESSION['email']));
             } else {
                 // Renvoye que le password n'est pas bon
                 echo json_encode(array('success' => false, 'message' => 'Incorrect password'));
