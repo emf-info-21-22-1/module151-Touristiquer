@@ -62,7 +62,7 @@ class Ctrl_User
             $wrk->createProfile($user);
         } else {
             //La requete est incomplète ou mal formulée
-            echo 400;
+            http_response_code(400);
         }
     }
 
@@ -82,11 +82,19 @@ class Ctrl_User
                 echo json_encode(array('success' => true, 'message' => 'Login successful', 'pk_user' => $_SESSION['pk_user'], 'username' => $_SESSION['username'], 'email' => $_SESSION['email']));
             } else {
                 // Renvoye que le password n'est pas bon
+                http_response_code(401); //informations d'identification incorrectes.
                 echo json_encode(array('success' => false, 'message' => 'Incorrect password'));
             }
         } else {
             // Renvoye un message si l'user n'existe pas
+            http_response_code(401); //informations d'identification incorrectes.
             echo json_encode(array('success' => false, 'message' => 'User not found'));
         }
+    }
+
+    public function disconnect()
+    {
+        $wrk = new wrkLogin();
+        return $wrk->disconnect();
     }
 }

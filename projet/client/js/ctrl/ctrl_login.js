@@ -7,13 +7,9 @@
 // Définir une variable pour suivre l'état de connexion
 let loggedIn = false;
 
-
 $().ready(() => {
 
-    // Définir une variable pour suivre l'état de connexion
-    let loggedIn = false;
-
-    // Appeler la fonction pour masquer ou afficher les liens au chargement de la page
+    // Masquer ou afficher les liens au chargement de la page
     toggleLinksVisibility();
 
     // Appeler la fonction de connexion avec les valeurs des champs
@@ -26,7 +22,18 @@ $().ready(() => {
 
         // Appeler la fonction de connexion avec les valeurs des champs
         httpServices.login(username, password, loginSuccess, loginError);
+
+        // Masquer ou afficher les liens au chargement de la page
+        toggleLinksVisibility();
     });
+
+    document.getElementById('deconnect-user').addEventListener('click', function (event) {
+        event.preventDefault();
+        // Appel de la fonction de déconnexion avec les fonctions de rappel appropriées
+        httpServices.disconnect(disconnectSuccess, disconnectError);
+        loggedIn = false;
+        toggleLinksVisibility();
+    })
 });
 
 // Fonction pour gérer la réussite de la connexion
@@ -51,10 +58,46 @@ function loginError(error) {
 function toggleLinksVisibility() {
     // Sélectionner les liens à masquer ou afficher
     const artistConnected = document.querySelector('#connected-link');
+    const upload = document.querySelector('#upload-link');
+    const profile = document.querySelector('#profile-link');
+    const login = document.querySelector('#login-link');
+    const register = document.querySelector('#register-link');
 
     if (loggedIn) {
+        //afficher
         artistConnected.classList.remove('hidden');
+        upload.classList.remove('hidden');
+        profile.classList.remove('hidden');
+        //Cacher
+        login.classList.add('hidden');
+        register.classList.add('hidden');
     } else {
+        //Cacher
         artistConnected.classList.add('hidden');
+        upload.classList.add('hidden');
+        profile.classList.add('hidden');
+        //afficher
+        login.classList.remove('hidden');
+        register.classList.remove('hidden');
     }
+}
+
+function logout() {
+    httpServices.disconnect(disconnectSuccess, disconnectError);
+    loggedIn = false;
+}
+
+function disconnectSuccess(response) {
+    // Traiter la réponse du serveur
+    if (response.success) {
+        // Déconnexion réussie, mettre à jour l'état de connexion
+        console.log('Logout successful');
+    } else {
+        // Afficher un message d'erreur à l'utilisateur
+        console.error('Logout failed:', response.message);
+    }
+}
+
+function disconnectError(error) {
+    console.error('Error:', error);
 }

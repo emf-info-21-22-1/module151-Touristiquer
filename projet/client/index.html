@@ -25,7 +25,7 @@
 </head>
 
 <body>
-    <!-- corps de la page -->
+    <!--NavBar Top-->
     <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
         <div class="px-3 py-2 lg:px-5 lg:pl-3">
             <div class="flex flex-row items-center justify-between">
@@ -78,7 +78,7 @@
                 <!--Logged-->
                 <div class="flex items-center">
                     <div class="flex items-center ms-3">
-                        <div>
+                        <div id="profile-link">
                             <button type="button"
                                 class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
                                 aria-expanded="false" data-dropdown-toggle="dropdown-user">
@@ -108,7 +108,7 @@
                                         role="menuitem">Settings</a>
                                 </li>
                                 <li>
-                                    <a href="#"
+                                    <a href="#" id="deconnect-user"
                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                                         role="menuitem">Sign out</a>
                                 </li>
@@ -120,6 +120,7 @@
         </div>
     </nav>
 
+    <!--Sidebar -->
     <aside id="logo-sidebar"
         class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
         aria-label="Sidebar">
@@ -167,7 +168,7 @@
                         <span class="flex-1 ms-3 whitespace-nowrap">Single</span>
                     </a>
                 </li>
-                <li id="connected-link">
+                <li id="upload-link">
                     <a href="#"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -181,7 +182,7 @@
                         <span class="flex-1 ms-3 whitespace-nowrap">Upload Songs</span>
                     </a>
                 </li>
-                <li>
+                <li id="login-link">
                     <a href="#" data-modal-target="Login-modal" data-modal-toggle="Login-modal"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -192,7 +193,7 @@
                         <span class="flex-1 ms-3 whitespace-nowrap">Sign In</span>
                     </a>
                 </li>
-                <li>
+                <li id="register-link">
                     <a href="#" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"

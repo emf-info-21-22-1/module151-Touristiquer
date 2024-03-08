@@ -30,12 +30,7 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
         case 'GET':
             if ($data != null) {
                 switch ($data['action']) {
-                    case 'TestLogin':
 
-                        break;
-                    case 'CheckIfConnected':
-
-                        break;
                     case 'listAllTitles':
                         if (isset($data['pk'])) {
                             $pk = $data['pk'];
@@ -100,6 +95,11 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
                         } else {
                             echo 'Certains champs sont manquants dans les données JSON !';
                         }
+                        break;
+                    case 'disconnect':
+                        $userCtrl = new Ctrl_User();
+                        $result = $userCtrl->disconnect();
+                        echo $result;
                         break;
                 }
             } else {

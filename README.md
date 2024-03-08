@@ -27,4 +27,4 @@ En tant que producteur de musique, cette plateforme me permettra de partager mes
 - [ ] Gérer les éléments de la musique
 - [ ] Modifier le profil
 - [ ] Supprimer le profil
-- [ ] Se déconnecter
+- [x] Se déconnecter
