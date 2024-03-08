@@ -51,14 +51,13 @@ class wrkLogin
 
         if ($existingUser) {
             $user = new User(
-                $existingUser['PK_User'], 
+                $existingUser['PK_User'],
                 $existingUser['Username'],
                 $existingUser['Email'],
                 $existingUser['Password']
             );
 
             return $user;
-
         } else {
             return false;
         }

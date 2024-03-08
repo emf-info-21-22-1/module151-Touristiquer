@@ -1,16 +1,14 @@
 //En test
-const base_url = "http://localhost/server"
-
-// En prod
+const base_url = "http://localhost:8080/"
 //const base_url = "https://benedettir.emf-informatique.ch/151/server/";
 
 const httpServices = {
 
     //Ajouter un utilisateur à la db, côté serveur hacher le mot de passe
-    register(username, password){
+    register(username, password) {
 
         let data = {
-            "action":"signUp",
+            "action": "signUp",
             "username": username,
             "password": password
         }
@@ -19,7 +17,7 @@ const httpServices = {
             method: "POST",
             url: `${base_url}main.php`,
             dataType: "json",
-            data: JSON.Stringify(data),
+            data: JSON.stringify(data),
             xhrFields: {
                 withCredentials: true
             },
@@ -32,7 +30,7 @@ const httpServices = {
     login(username, password, successCallback, errorCallback) {
 
         let data = {
-            "action":"signIn",
+            "action": "signIn",
             "username": username,
             "password": password
         }
@@ -41,7 +39,7 @@ const httpServices = {
             method: "POST",
             url: `${base_url}main.php`,
             dataType: "json",
-            data: JSON.Stringify(data),
+            data: JSON.stringify(data),
             xhrFields: {
                 withCredentials: true
             },
@@ -54,14 +52,14 @@ const httpServices = {
     disconnect(successCallback, errorCallback) {
 
         let data = {
-            "action":"disconnect"
+            "action": "disconnect"
         }
 
         $.ajax({
             type: "POST",
             dataType: "json",
             url: `${base_url}main.php`,
-            data: JSON.Stringify(data),
+            data: JSON.stringify(data),
             xhrFields: {
                 withCredentials: true
             },
@@ -70,7 +68,7 @@ const httpServices = {
         });
     },
 
-    loadMusics(pk_user, successCallback, errorCallback){
+    loadMusics(pk_user, successCallback, errorCallback) {
         $.ajax({
             type: "GET",
             dataType: "json",
@@ -84,8 +82,8 @@ const httpServices = {
         });
     },
 
-    //Fichier à mettre sur le serv
-    uploadMusic(pk_user, titre, file, successCallback, errorCallback){
+    // Fichier à mettre sur le serv
+    uploadMusic(pk_user, titre, file, successCallback, errorCallback) {
 
     }
 }
