@@ -7,7 +7,7 @@
 */
 
 require_once('SessionManager.php');
-require_once('./beans/Title.php');
+require_once('./beans/Titre.php');
 require_once('./wrk/wrkTitre.php');
 
 class Ctrl_Title

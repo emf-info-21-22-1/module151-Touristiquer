@@ -1,4 +1,5 @@
-//En test
+
+
 const base_url = "http://localhost:8080/"
 //const base_url = "https://benedettir.emf-informatique.ch/151/server/";
 
