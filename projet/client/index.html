@@ -83,16 +83,17 @@
                                 class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
                                 aria-expanded="false" data-dropdown-toggle="dropdown-user">
                                 <span class="sr-only">Open user menu</span>
-                                <img class="w-8 h-8 rounded-full" src="assets/img/icon.png" alt="user photo">
+                                <img class="w-8 h-8 rounded-full" src="assets/img/icon_user.png" alt="user photo">
                             </button>
                         </div>
                         <div class="hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
                             id="dropdown-user">
                             <div class="px-4 py-3" role="none">
-                                <p class="text-sm text-gray-900 dark:text-white" role="none">
+                                <p id="username-display" class="text-sm text-gray-900 dark:text-white" role="none">
                                     Touristiquement
                                 </p>
-                                <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
+                                <p id="email-display"
+                                    class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
                                     name@company.com
                                 </p>
                             </div>
@@ -211,7 +212,6 @@
             </ul>
         </div>
     </aside>
-
 
     <!-- Main modal Login-->
     <div id="Login-modal" tabindex="-1" aria-hidden="true"
@@ -359,54 +359,8 @@
             <!--test-->
             <div class="scroll-container">
                 <div class="scroll-content space-x-2">
-                    <!-- Vos éléments de titre ici -->
-                    <a href="#"
-                        class="block max-w-48 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                        <img class="mb-2 rounded-lg shadow-xl dark:shadow-gray-800"
-                            src="assets/img/logo_TourisTunes.png" alt="image description">
-                        <h5 class="text-1xl font-bold tracking-tight text-gray-900 dark:text-white">Other Music Title
-                        </h5>
-                        <p class="font-normal text-gray-700 dark:text-gray-400">Touristiquement</p>
-                    </a>
-                    <!-- Ajoutez plus d'éléments de titre ici au besoin -->
-                    <a href="#"
-                        class="block max-w-48 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                        <img class="mb-2 rounded-lg shadow-xl dark:shadow-gray-800"
-                            src="assets/img/logo_TourisTunes.png" alt="image description">
-                        <h5 class="text-1xl font-bold tracking-tight text-gray-900 dark:text-white">Music Title</h5>
-                        <p class="font-normal text-gray-700 dark:text-gray-400">Touristiquement</p>
-                    </a>
-                    <a href="#"
-                        class="block max-w-48 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                        <img class="mb-2 rounded-lg shadow-xl dark:shadow-gray-800"
-                            src="assets/img/logo_TourisTunes.png" alt="image description">
-                        <h5 class="text-1xl font-bold tracking-tight text-gray-900 dark:text-white">Music Title</h5>
-                        <p class="font-normal text-gray-700 dark:text-gray-400">Touristiquement</p>
-                    </a>
-                    <a href="#"
-                        class="block max-w-48 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                        <img class="mb-2 rounded-lg shadow-xl dark:shadow-gray-800"
-                            src="assets/img/logo_TourisTunes.png" alt="image description">
-                        <h5 class="text-1xl font-bold tracking-tight text-gray-900 dark:text-white">Music Title</h5>
-                        <p class="font-normal text-gray-700 dark:text-gray-400">Touristiquement</p>
-                    </a>
-                    <a href="#"
-                        class="block max-w-48 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                        <img class="mb-2 rounded-lg shadow-xl dark:shadow-gray-800"
-                            src="assets/img/logo_TourisTunes.png" alt="image description">
-                        <h5 class="text-1xl font-bold tracking-tight text-gray-900 dark:text-white">Music Title</h5>
-                        <p class="font-normal text-gray-700 dark:text-gray-400">Touristiquement</p>
-                    </a>
+                    <!-- Tout les titres de la db sontz ici -->
                 </div>
-                <button type="button"
-                    class="scroll-btn next text-white bg-blue-700 hover:bg-teal-800 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-teal-600 dark:hover:bg-teal-700">
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 14 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M1 5h12m0 0L9 1m4 4L9 9" />
-                    </svg>
-                    <span class="sr-only">Icon description</span>
-                </button>
             </div>
             <h2 class="text-4xl font-extrabold dark:text-dark">You may also like</h2>
         </div>
@@ -486,8 +440,8 @@
     <!-- Charger à la fin-->
     <script type="text/javascript" src="js/ctrl/ctrl_index.js"></script>
     <script type="text/javascript" src="js/ctrl/ctrl_login.js"></script>
+    <script type="text/javascript" src="js/ctrl/ctrl_addTitle.js"></script>
     <script type="text/javascript" src="js/ctrl/servicesHttp.js"></script>
-
 
 </body>
 

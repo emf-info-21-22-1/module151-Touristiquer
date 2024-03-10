@@ -43,6 +43,10 @@ function loginSuccess(response) {
         // Connexion réussie, rediriger l'utilisateur ou effectuer d'autres actions
         loggedIn = true;
         console.log('Login successful');
+
+        // Met à jour les informations utilisateur
+        updateUserInfo(response.username, response.email);
+
     } else {
         // Afficher un message d'erreur à l'utilisateur
         console.error('Login failed:', response.message);
@@ -100,4 +104,15 @@ function disconnectSuccess(response) {
 
 function disconnectError(error) {
     console.error('Error:', error);
+}
+
+// Fonction pour mettre à jour les informations utilisateur
+function updateUserInfo(username, email) {
+    // Sélectionne les éléments pour afficher le nom et l'email
+    const usernameElement = document.querySelector('#username-display');
+    const emailElement = document.querySelector('#email-display');
+
+    // Met à jour les nouvelles informations
+    usernameElement.textContent = username;
+    emailElement.textContent = email;
 }

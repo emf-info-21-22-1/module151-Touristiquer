@@ -19,7 +19,7 @@ En tant que producteur de musique, cette plateforme me permettra de partager mes
 - [x] S'inscrire
 - [x] Se connecter
 - [ ] Ecouter les musiques
-- [ ] Charger les musiques
+- [x] Charger les musiques
 - [ ] Rechercher une musique
 
 ### Fonctionnalités utilisateur connecté

@@ -28,22 +28,16 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     switch ($_SERVER['REQUEST_METHOD']) {
 
         case 'GET':
-            if ($data != null) {
-                switch ($data['action']) {
-
+            if ($_GET != null) {
+                switch ($_GET['action']) {
                     case 'listAllTitles':
-                        if (isset($data['pk'])) {
-                            $pk = $data['pk'];
-                            $TitleCtrl = new Ctrl_Title();
-                            $result = $TitleCtrl->listAllTitles($pk);
-                            echo $result;
-                        } else {
-                            echo 'Certains champs sont manquants dans les données JSON !';
-                        }
+                        $TitleCtrl = new Ctrl_Title();
+                        $result = $TitleCtrl->listAllTitles();
+                        echo $result;
                         break;
                     case 'listAllUsers':
-                        if (isset($data['pk'])) {
-                            $pk = $data['pk'];
+                        if (isset($_GET['pk'])) {
+                            $pk = $_GET['pk'];
                             $userCtrl = new Ctrl_User();
                             $result = $userCtrl->listAllUsers($pk);
                             echo $result;
@@ -66,6 +60,8 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
                             $username = $data["username"];
                             $email = $data["email"];
                             $password = $data["password"];
+                            strip_tags($username, $email);
+                            htmlspecialchars($username, $email);
                             $userCtrl = new Ctrl_User();
                             $result = $userCtrl->signUp($username, $email, $password);
                             echo $result;
@@ -78,6 +74,8 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
                         if (isset($data['username'], $data['password'])) {
                             $username = $data['username'];
                             $password = $data['password'];
+                            strip_tags($username);
+                            htmlspecialchars($username);
                             $userCtrl = new Ctrl_User();
                             $result = $userCtrl->signIn($username, $password);
                             echo $result;

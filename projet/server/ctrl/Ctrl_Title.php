@@ -23,7 +23,12 @@ class Ctrl_Title
   public function listAllTitles()
   {
     $wrk = new wrkTitre();
-    
+
+    // Appeler la méthode de récupération des titres depuis la base de données
+    $titles = $wrk->getAllTitlesFromDB();
+
+    // Retourner les titres au format JSON ou sous une autre forme selon votre besoin
+    return json_encode($titles);
   }
 
   //Ajoute un titre pour le publié

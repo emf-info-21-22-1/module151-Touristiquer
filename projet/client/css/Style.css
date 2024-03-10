@@ -8,22 +8,8 @@
     transition: transform 0.3s ease;
 }
 
-.scroll-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: transparent;
-    border: none;
-    color: #333;
-    font-size: 1.5rem;
-    cursor: pointer;
+.block {
+    min-width: 10rem;
+    max-width: 48rem;
+    max-height: 20rem;
 }
-
-.scroll-btn.next {
-    right: 10px;
-}
-
-.scroll-btn.prev {
-    left: 10px;
-}
-  

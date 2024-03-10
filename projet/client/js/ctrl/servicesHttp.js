@@ -69,12 +69,12 @@ const httpServices = {
         });
     },
 
-    loadMusics(pk_user, successCallback, errorCallback) {
+    loadMusics(successCallback, errorCallback) {
         $.ajax({
             type: "GET",
             dataType: "json",
             url: `${base_url}main.php`,
-            data: `action=listAllTitles&pk_user=${pk_user}`,
+            data: `action=listAllTitles`,
             xhrFields: {
                 withCredentials: true
             },

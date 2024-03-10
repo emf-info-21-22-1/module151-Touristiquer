@@ -81,14 +81,14 @@ class Ctrl_User
                 // Renvoye les variables 
                 echo json_encode(array('success' => true, 'message' => 'Login successful', 'pk_user' => $_SESSION['pk_user'], 'username' => $_SESSION['username'], 'email' => $_SESSION['email']));
             } else {
-                // Renvoye que le password n'est pas bon
+                // Renvoye un message si l'user n'existe pas
                 http_response_code(401); //informations d'identification incorrectes.
-                echo json_encode(array('success' => false, 'message' => 'Incorrect password'));
+                echo json_encode(array('success' => false, 'message' => 'User not found or Incorrect password'));
             }
         } else {
             // Renvoye un message si l'user n'existe pas
             http_response_code(401); //informations d'identification incorrectes.
-            echo json_encode(array('success' => false, 'message' => 'User not found'));
+            echo json_encode(array('success' => false, 'message' => 'User not found or Incorrect password'));
         }
     }
 
