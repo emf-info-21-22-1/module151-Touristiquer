@@ -19,7 +19,7 @@ class Ctrl_User
         $this->SessionManager = SessionManager::getInstance();
     }
 
-    //check si le login est ok echo 200 si oui et 401 si nonb
+    //check si le login est ok echo 200 si oui et 401 si non
     public function TestLogin($username, $password)
     {
         if (!empty($username) && !empty($mail) && !empty($password)) {
